@@ -1,86 +1,12 @@
-﻿<!--
-	O CSS está no head ;)
--->
+﻿<div class="container-fluid">
 
-<div class="container-fluid">
 	<h1>
-		Lista de pessoas cadastradas
+		Projeto
 	</h1>
-	
-	<!--
-		O motivo do width: 100% ;)
 
-		https://datatables.net/examples/basic_init/flexible_width.html
-	-->
-	<table id="tabela" class="table table-flush table-striped table-hover" style="width: 100%;"></table>
+	<p>
+		Hello world 🎃
+		hello jaum
+	</p>
 
 </div>
-
-<!--
-	jQuery
-
-	jQuery API
-	https://api.jquery.com/
--->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-<!--
-	Bootstrap 4
-
-	https://getbootstrap.com/docs/4.0/getting-started/introduction/
-	https://getbootstrap.com/docs/4.0/getting-started/download/
--->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-
-<!--
-	DataTables
-
-	https://datatables.net/
-	https://datatables.net/download/index
-	https://datatables.net/examples/index
-	https://datatables.net/manual/
--->
-<script src="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.js"></script>
-
-<script type="text/javascript">
-
-	// Estamos transformando a lista de pessoas em uma string JSON
-	// para que o browser tenha acesso à lista original. Veja o
-	// código da página no browser. ;)
-	let pessoas = <%- JSON.stringify(pessoas) %>;
-
-	let expressaoLT = /</g, expressaoGT = />/g;
-	function encode(x) {
-		// Muito, muito importante trocar os caracteres < e > por &lt; e &gt; porque
-		// se o dado da tabela tiver < >, o browser vai interpretar como uma tag HTML ;)
-		return (x ? x.replace(expressaoLT, "&lt;").replace(expressaoGT, "&gt;") : "");
-	}
-
-	// Existe uma INFINIDADE de opções para configurar uma DataTable!!!
-	$("#tabela").DataTable({
-		// Ordena os registros inicialmente pela segunda coluna
-		order: [[1, "asc"]],
-
-		width: "100%",
-
-		language: {
-			// Traduções
-			// https://datatables.net/plug-ins/i18n/
-			// https://datatables.net/plug-ins/i18n/Portuguese-Brasil.html
-            url: "https://cdn.datatables.net/plug-ins/1.11.3/i18n/pt_br.json"
-        },
-
-		// https://datatables.net/reference/option/deferRender
-		deferRender: true,
-
-		// https://datatables.net/reference/option/columns
-		columns: [
-			{ title: "Id", type: "number", data: "id" },
-			{ title: "Nome", render: encode, data: "nome" },
-			{ title: "E-mail", render: encode, data: "email" }
-		],
-
-		data: pessoas
-	});
-</script>

@@ -1,35 +1,45 @@
 ﻿import app = require("teem");
 
-//**********************************************************************************
-// Se por acaso ocorrer algum problema de conexão, autenticação com o MySQL,
-// por favor, execute este código abaixo no MySQL e tente novamente!
-//
-// ALTER USER 'USUÁRIO'@'localhost' IDENTIFIED WITH mysql_native_password BY 'SENHA';
-//
-// * Assumindo que o usuário seja root e a senha root, o comando ficaria assim:
-//
-// ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
-//
-//**********************************************************************************
-
 class IndexRoute {
 	public async index(req: app.Request, res: app.Response) {
-		// Mais para frente iremos melhorar os tipos, para não usar any[] :)
-		let pessoas: any[];
+		res.render("index/index");
+	}
 
-		await app.sql.connect(async (sql) => {
-
-			// Todas os comandos SQL devem ser executados aqui dentro do app.sql.connect().
-
-			pessoas = await sql.query("SELECT id, nome, email FROM pessoa");
-
-		});
-
+	public async sobre(req: app.Request, res: app.Response) {
 		let opcoes = {
-			pessoas: pessoas
+			titulo: "Sobre"
 		};
 
-		res.render("index/index", opcoes);
+		res.render("index/sobre", opcoes);
+	}
+
+	public async produtos(req: app.Request, res: app.Response) {
+		let produtoA = {
+			id: 1,
+			nome: "Produto A",
+			valor: 25
+		};
+
+		let produtoB = {
+			id: 2,
+			nome: "Produto B",
+			valor: 15
+		};
+
+		let produtoC = {
+			id: 3,
+			nome: "Produto C",
+			valor: 100
+		};
+
+		let produtosVindosDoBanco = [ produtoA, produtoB, produtoC ];
+
+		let opcoes = {
+			titulo: "Listagem de Produtos",
+			produtos: produtosVindosDoBanco
+		};
+
+		res.render("index/produtos", opcoes);
 	}
 }
 
