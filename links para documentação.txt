@@ -7,11 +7,15 @@ https://www.npmjs.com/package/express-ejs-layouts
 Extensão do VS Code para EJS
 EJS language support
 
-Navbar
-https://getbootstrap.com/docs/4.6/components/navbar/
+jQuery API
+https://api.jquery.com/
 
-SweetAlert2
-https://sweetalert2.github.io
+Bootstrap 4
+https://getbootstrap.com/docs/4.0/getting-started/introduction/
+https://getbootstrap.com/docs/4.0/getting-started/download/
 
-jQuery Validation Plugin
-https://jqueryvalidation.org/documentation/
+DataTables
+https://datatables.net/
+https://datatables.net/download/index
+https://datatables.net/examples/index
+https://datatables.net/manual/

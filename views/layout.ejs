@@ -1,27 +1,34 @@
 ﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="pt-br">
 <head>
-	<%- include("comum/cabecalho") %>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<%- defineContent("espaco-head") %>
+	<title><%=((typeof titulo === "undefined" || !titulo) ? "Projeto" : (titulo + " - Projeto")) %></title>
+
+	<!--
+		Bootstrap 4
+
+		https://getbootstrap.com/docs/4.0/getting-started/introduction/
+		https://getbootstrap.com/docs/4.0/getting-started/download/
+	-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+	<!--
+		DataTables
+
+		https://datatables.net/
+		https://datatables.net/download/index
+		https://datatables.net/examples/index
+		https://datatables.net/manual/
+	-->
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.11.3/datatables.min.css" />
 </head>
 <body>
 
-	<div class="limitador">
-
-		<%- include("comum/barra") %>
-
-		<div class="conteudo">
-
-			<%- body %>
-
-		</div>
-
-		<%- include("comum/rodape") %>
-
-		<%- defineContent("espaco-rodape") %>
-
-	</div>
+	<%- body %>
 
 </body>
 </html>
